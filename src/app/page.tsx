@@ -50,7 +50,7 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col items-center p-24">
       <div className="flex">
         <h1 className="font-serif mb-4 text-4xl leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white p-4">
-          Gift Redemption
+          Redeem IT!
         </h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
