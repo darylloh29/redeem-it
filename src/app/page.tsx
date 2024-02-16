@@ -21,7 +21,7 @@ export default function Home() {
   const { fetchCSV } = useFetch();
 
   useEffect(() => {
-    fetchCSV("/staff-id-to-team-mapping.csv", setStaffList);
+    fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList);
   }, []);
 
   useEffect(() => {
@@ -35,9 +35,10 @@ export default function Home() {
     });
     if (searchedList.length === 0) {
       setDisplayNoResult(true);
+      return;
     }
+    setDisplayNoResult(false);
     setDisplayList(searchedList);
-    console.log("Run");
   }, [search]);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
