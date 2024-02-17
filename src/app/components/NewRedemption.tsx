@@ -66,8 +66,10 @@ export default function NewRedemption(props: NewRedemptionProps) {
       redeemed_at: new Date().getTime(),
     };
     redemptionList.push(newRedemption);
-    console.log(newRedemption);
     props.setRedemptionList(redemptionList);
+    return toast("Successfully redeemed for " + teamName + " !", {
+      type: "success",
+    });
   };
 
   return (
