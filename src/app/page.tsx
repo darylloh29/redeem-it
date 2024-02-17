@@ -1,6 +1,5 @@
 import StaffTable from "./components/StaffTable";
-import NewRedemption from "./components/NewRedemption";
-import PastRedemptions from "./components/PastRedemptions";
+import Redemptions from "./components/Redemptions";
 
 export default function Home() {
   return (
@@ -27,13 +26,8 @@ export default function Home() {
       <div className="w-full max-w-7xl">
         <StaffTable />
       </div>
-      <div className="flex flex-row w-full max-w-7xl">
-        <div className="basis-2/5 mr-2">
-          <NewRedemption />
-        </div>
-        <div className="basis-3/5 ml-2">
-          <PastRedemptions />
-        </div>
+      <div className="w-full max-w-7xl">
+        <Redemptions />
       </div>
     </main>
   );
