@@ -4,20 +4,18 @@ import { useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
 type Staff = {
-  staff_pass_id: String;
-  team_name: String;
-  created_at: Date;
+  staff_pass_id: string;
+  team_name: string;
+  created_at: string;
 };
-
-type StaffList = Staff[];
 
 const TABLE_HEAD = ["Staff ID", "Team Name"];
 
 export default function StaffTable() {
   const [search, setSearch] = useState<string>("");
   const [displayNoResult, setDisplayNoResult] = useState<Boolean>(false);
-  const [staffList, setStaffList] = useState<StaffList>([]);
-  const [displayList, setDisplayList] = useState<StaffList>([]);
+  const [staffList, setStaffList] = useState<Staff[]>([]);
+  const [displayList, setDisplayList] = useState<Staff[]>([]);
   const { fetchCSV } = useFetch();
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export default function StaffTable() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative z-10 max-w-5xl w-full items-center font-mono text-sm lg:flex">
+      <div className="relative z-10 w-full items-center text-sm lg:flex">
         <div className="absolute w-full inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg
             className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -73,7 +71,7 @@ export default function StaffTable() {
           onChange={handleSearchChange}
         />
       </div>
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex max-h-full">
+      <div className="z-10 w-full items-center justify-between font-mono text-sm lg:flex max-h-full">
         <div className="overflow-y-auto max-h-96 w-full">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
