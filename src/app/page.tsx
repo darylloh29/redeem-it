@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import StaffTable from "./components/StaffTable";
 import Redemptions from "./components/Redemptions";
 import useFetch from "./hooks/useFetch";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 type Staff = {
   staff_pass_id: string;
@@ -47,6 +49,7 @@ export default function Home() {
       <div className="w-full max-w-7xl">
         <Redemptions staffList={staffList} />
       </div>
+      <ToastContainer autoClose={3000} />
     </main>
   );
 }

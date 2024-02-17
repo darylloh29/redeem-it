@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, Dispatch, SetStateAction } from "react";
+import { toast } from "react-toastify";
 
 interface NewRedemptionProps {
   staffList: Staff[];
@@ -21,6 +22,7 @@ type RedemptionData = {
 
 export default function NewRedemption(props: NewRedemptionProps) {
   const staffList = props.staffList;
+  console.log("test");
   const [staffID, setStaffID] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +31,9 @@ export default function NewRedemption(props: NewRedemptionProps) {
 
   const handleSubmit = () => {
     if (staffID.length < 1) {
-      return;
+      return toast("Staff ID cannot be empty!", {
+        type: "error",
+      });
     }
     console.log(staffID);
   };
@@ -52,6 +56,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
           type="text"
           onChange={handleInputChange}
           placeholder="Enter Staff ID here"
+          autoComplete="off"
         />
         <button
           className="bg-gray-500 hover:bg-gray-700 text-white rounded focus:outline-none focus:shadow-outline py-2 px-4"

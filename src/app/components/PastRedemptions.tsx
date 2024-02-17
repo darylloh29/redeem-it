@@ -53,11 +53,11 @@ export default function PastRedemptions(props: PastRedemptionsProps) {
             </thead>
             <tbody>
               {props.redemptionList.map(
-                ({ team_name, staff_pass_id, redeemed_at }, index) => {
+                ({ team_name, staff_pass_id, redeemed_at }) => {
                   const classes = "p-4";
                   const redeemedDate = convertEpochToDate(redeemed_at);
                   return (
-                    <tr key={index}>
+                    <tr key={staff_pass_id}>
                       <td className={classes}>{team_name}</td>
                       <td className={classes}>{staff_pass_id}</td>
                       <td className={classes}>{redeemedDate}</td>

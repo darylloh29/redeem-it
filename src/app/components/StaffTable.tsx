@@ -69,7 +69,7 @@ export default function StaffTable(props: StaffTableProps) {
         />
       </div>
       <div className="z-10 w-full items-center justify-between font-mono text-sm lg:flex max-h-full">
-        <div className="overflow-y-auto max-h-96 w-full">
+        <div className="overflow-y-auto h-96 w-full">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>
@@ -83,19 +83,19 @@ export default function StaffTable(props: StaffTableProps) {
             {!displayNoResult && (
               <tbody>
                 {displayList.length != 0
-                  ? displayList.map(({ staff_pass_id, team_name }, index) => {
+                  ? displayList.map(({ staff_pass_id, team_name }) => {
                       const classes = "p-4";
                       return (
-                        <tr key={index}>
+                        <tr key={staff_pass_id}>
                           <td className={classes}>{staff_pass_id}</td>
                           <td className={classes}>{team_name}</td>
                         </tr>
                       );
                     })
-                  : staffList.map(({ staff_pass_id, team_name }, index) => {
+                  : staffList.map(({ staff_pass_id, team_name }) => {
                       const classes = "p-4";
                       return (
-                        <tr key={index}>
+                        <tr key={staff_pass_id}>
                           <td className={classes}>{staff_pass_id}</td>
                           <td className={classes}>{team_name}</td>
                         </tr>
