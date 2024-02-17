@@ -1,17 +1,19 @@
 "use client";
 
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 interface NewRedemptionProps {
-  staffList: Staff[];
+  staffMap: Map<StaffPassID, TeamName>;
   redemptionList: RedemptionData[];
   setRedemptionList: Dispatch<SetStateAction<RedemptionData[]>>;
 }
 
+type StaffPassID = string;
+type TeamName = string;
 type Staff = {
-  staff_pass_id: string;
-  team_name: string;
+  staff_pass_id: StaffPassID;
+  team_name: TeamName;
   created_at: string;
 };
 type RedemptionData = {
@@ -33,7 +35,20 @@ export default function NewRedemption(props: NewRedemptionProps) {
         type: "error",
       });
     }
-    console.log(staffID);
+    const staffMap = props.staffMap;
+    if (!staffMap.has(staffID)) {
+      return toast("Invalid Staff ID!", {
+        type: "error",
+      });
+    }
+    const teamName = staffMap.get(staffID);
+    const redemptionList = props.redemptionList;
+    const redeemed = redemptionList.find((e) => e.team_name == teamName);
+    if (redeemed) {
+      return toast("Team " + teamName + " has already redeemed!", {
+        type: "error",
+      });
+    }
   };
 
   return (

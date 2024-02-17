@@ -6,9 +6,8 @@ import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
 
 interface RedemptionsProps {
-  staffList: Staff[];
+  staffMap: Map<string, string>;
 }
-
 type Staff = {
   staff_pass_id: string;
   team_name: string;
@@ -33,7 +32,7 @@ export default function Redemptions(props: RedemptionsProps) {
     <div className="flex flex-row w-full">
       <div className="basis-2/5 mr-2">
         <NewRedemption
-          staffList={props.staffList}
+          staffMap={props.staffMap}
           redemptionList={redemptionList}
           setRedemptionList={setRedemptionList}
         />

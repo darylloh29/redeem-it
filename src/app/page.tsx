@@ -15,12 +15,21 @@ type Staff = {
 
 export default function Home() {
   const [staffList, setStaffList] = useState<Staff[]>([]);
+  const [staffMap, setStaffMap] = useState<Map<string, string>>(new Map());
 
   const { fetchCSV } = useFetch();
 
   useEffect(() => {
     fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList);
   }, []);
+
+  useEffect(() => {
+    const tempStaffMap = new Map();
+    staffList.forEach((obj) => {
+      tempStaffMap.set(obj.staff_pass_id, obj.team_name);
+    });
+    setStaffMap(tempStaffMap);
+  }, [staffList]);
 
   return (
     <main className="font-mono relative flex min-h-screen flex-col items-center p-24">
@@ -47,7 +56,7 @@ export default function Home() {
         <StaffTable staffList={staffList} />
       </div>
       <div className="w-full max-w-7xl">
-        <Redemptions staffList={staffList} />
+        <Redemptions staffMap={staffMap} />
       </div>
       <ToastContainer autoClose={3000} />
     </main>
