@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 interface NewRedemptionProps {
@@ -29,7 +29,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
     setStaffID(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (staffID.length < 1) {
       return toast("Staff ID cannot be empty!", {
         type: "error",
@@ -67,6 +67,17 @@ export default function NewRedemption(props: NewRedemptionProps) {
     };
     redemptionList.push(newRedemption);
     props.setRedemptionList(redemptionList);
+
+    const res = await fetch("/api/redemptions", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(redemptionList),
+    });
+    await res.json();
+
     return toast("Successfully redeemed for " + teamName + " !", {
       type: "success",
     });
