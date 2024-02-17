@@ -19,7 +19,7 @@ type Staff = {
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
-  redeemed_at: string;
+  redeemed_at: number;
 };
 
 export default function NewRedemption(props: NewRedemptionProps) {
@@ -35,20 +35,39 @@ export default function NewRedemption(props: NewRedemptionProps) {
         type: "error",
       });
     }
+
     const staffMap = props.staffMap;
     if (!staffMap.has(staffID)) {
       return toast("Invalid Staff ID!", {
         type: "error",
       });
     }
+
     const teamName = staffMap.get(staffID);
-    const redemptionList = props.redemptionList;
+
+    if (!teamName) {
+      return toast("No assigned team!", {
+        type: "error",
+      });
+    }
+
+    const redemptionList = props.redemptionList.slice();
     const redeemed = redemptionList.find((e) => e.team_name == teamName);
+
     if (redeemed) {
       return toast("Team " + teamName + " has already redeemed!", {
         type: "error",
       });
     }
+
+    const newRedemption: RedemptionData = {
+      team_name: teamName!.toUpperCase(),
+      staff_pass_id: staffID,
+      redeemed_at: new Date().getTime(),
+    };
+    redemptionList.push(newRedemption);
+    console.log(newRedemption);
+    props.setRedemptionList(redemptionList);
   };
 
   return (

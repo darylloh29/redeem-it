@@ -16,7 +16,7 @@ type Staff = {
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
-  redeemed_at: string;
+  redeemed_at: number;
 };
 
 export default function Redemptions(props: RedemptionsProps) {

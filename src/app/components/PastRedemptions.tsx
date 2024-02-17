@@ -4,12 +4,12 @@ interface PastRedemptionsProps {
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
-  redeemed_at: string;
+  redeemed_at: number;
 };
 
 const TABLE_HEAD = ["Team Name", "Collected By", "Collected At"];
 
-const convertEpochToDate = (epoch: string) => {
+const convertEpochToDate = (epoch: number) => {
   const months = [
     "Jan",
     "Feb",
