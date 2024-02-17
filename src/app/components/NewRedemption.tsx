@@ -1,8 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 
-export default function NewRedemption() {
+interface NewRedemptionProps {
+  staffList: Staff[];
+  redemptionList: RedemptionData[];
+  setRedemptionList: Dispatch<SetStateAction<RedemptionData[]>>;
+}
+
+type Staff = {
+  staff_pass_id: string;
+  team_name: string;
+  created_at: string;
+};
+type RedemptionData = {
+  team_name: string;
+  staff_pass_id: string;
+  redeemed_at: string;
+};
+
+export default function NewRedemption(props: NewRedemptionProps) {
+  const staffList = props.staffList;
   const [staffID, setStaffID] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,6 +28,7 @@ export default function NewRedemption() {
   };
 
   const handleRedeemClick = () => {
+    console.log(staffList);
     console.log(staffID);
   };
 

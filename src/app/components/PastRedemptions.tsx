@@ -1,8 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import useFetch from "../hooks/useFetch";
-
+interface PastRedemptionsProps {
+  redemptionList: RedemptionData[];
+}
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
@@ -35,15 +33,7 @@ const convertEpochToDate = (epoch: string) => {
   return day.toString() + " " + month + " " + year.toString();
 };
 
-export default function PastRedemptions() {
-  const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);
-  const { fetchCSV } = useFetch();
-
-  useEffect(() => {
-    fetchCSV("/team-to-redeemed-mapping.csv", setRedemptionList);
-    console.log(redemptionList);
-  }, []);
-
+export default function PastRedemptions(props: PastRedemptionsProps) {
   return (
     <div className="flex-col w-full items-center text-center justify-center">
       <h1 className="text-3xl text-gray-900 md:text-3xl lg:text-4xl dark:text-white p-4">
@@ -62,7 +52,7 @@ export default function PastRedemptions() {
               </tr>
             </thead>
             <tbody>
-              {redemptionList.map(
+              {props.redemptionList.map(
                 ({ team_name, staff_pass_id, redeemed_at }, index) => {
                   const classes = "p-4";
                   const redeemedDate = convertEpochToDate(redeemed_at);

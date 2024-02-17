@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import useFetch from "../hooks/useFetch";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
+interface StaffTableProps {
+  staffList: Staff[];
+}
 type Staff = {
   staff_pass_id: string;
   team_name: string;
@@ -11,16 +13,11 @@ type Staff = {
 
 const TABLE_HEAD = ["Staff ID", "Team Name"];
 
-export default function StaffTable() {
+export default function StaffTable(props: StaffTableProps) {
   const [search, setSearch] = useState<string>("");
   const [displayNoResult, setDisplayNoResult] = useState<Boolean>(false);
-  const [staffList, setStaffList] = useState<Staff[]>([]);
   const [displayList, setDisplayList] = useState<Staff[]>([]);
-  const { fetchCSV } = useFetch();
-
-  useEffect(() => {
-    fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList);
-  }, []);
+  const staffList = props.staffList;
 
   useEffect(() => {
     if (search === "") {
@@ -28,7 +25,7 @@ export default function StaffTable() {
       setDisplayList([]);
       return;
     }
-    const searchedList = staffList.filter((staff) => {
+    const searchedList = props.staffList.filter((staff) => {
       return staff.staff_pass_id.toLowerCase().includes(search.toLowerCase());
     });
     if (searchedList.length === 0) {
