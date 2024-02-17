@@ -21,8 +21,6 @@ type RedemptionData = {
 };
 
 export default function NewRedemption(props: NewRedemptionProps) {
-  const staffList = props.staffList;
-  console.log("test");
   const [staffID, setStaffID] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

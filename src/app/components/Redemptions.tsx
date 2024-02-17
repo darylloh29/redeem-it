@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import useFetch from "../hooks/useFetch";
 import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
@@ -24,10 +24,10 @@ export default function Redemptions(props: RedemptionsProps) {
   const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);
 
   const { fetchCSV } = useFetch();
-
-  useEffect(() => {
-    fetchCSV("/team-to-redeemed-mapping.csv", setRedemptionList);
-  }, []);
+  useMemo(
+    () => fetchCSV("/team-to-redeemed-mapping.csv", setRedemptionList),
+    [redemptionList]
+  );
 
   return (
     <div className="flex flex-row w-full">
