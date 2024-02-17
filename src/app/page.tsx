@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import StaffTable from "./components/StaffTable";
 import Redemptions from "./components/Redemptions";
 import useFetch from "./hooks/useFetch";
@@ -18,10 +18,9 @@ export default function Home() {
 
   const { fetchCSV } = useFetch();
 
-  useMemo(
-    () => fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList),
-    [staffList]
-  );
+  useEffect(() => {
+    fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList);
+  }, []);
 
   return (
     <main className="font-mono relative flex min-h-screen flex-col items-center p-24">
