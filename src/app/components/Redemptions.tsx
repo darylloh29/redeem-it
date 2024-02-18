@@ -22,10 +22,13 @@ type RedemptionData = {
 export default function Redemptions(props: RedemptionsProps) {
   const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);
 
-  const { fetchCSV } = useFetch();
-
   useEffect(() => {
-    fetchCSV("/team-to-redeemed-mapping.csv", setRedemptionList);
+    const fetchRedemptionData = async () => {
+      const response = await fetch("/api/redemptions");
+      const redemptionData = await response.json();
+      setRedemptionList(redemptionData);
+    };
+    fetchRedemptionData();
   }, []);
 
   return (

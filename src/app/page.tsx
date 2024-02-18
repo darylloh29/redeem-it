@@ -17,10 +17,13 @@ export default function Home() {
   const [staffList, setStaffList] = useState<Staff[]>([]);
   const [staffMap, setStaffMap] = useState<Map<string, string>>(new Map());
 
-  const { fetchCSV } = useFetch();
-
   useEffect(() => {
-    fetchCSV("/staff-id-to-team-mapping-long.csv", setStaffList);
+    const fetchStaffData = async () => {
+      const response = await fetch("/api/staff");
+      const staffData = await response.json();
+      setStaffList(staffData);
+    };
+    fetchStaffData().catch(console.error);
   }, []);
 
   useEffect(() => {
