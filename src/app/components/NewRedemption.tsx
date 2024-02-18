@@ -60,6 +60,11 @@ export default function NewRedemption(props: NewRedemptionProps) {
       });
     }
 
+    let numToRedeem = 0;
+    staffMap.forEach((value, key, map) => {
+      if (value == teamName) numToRedeem += 1;
+    });
+
     const newRedemption: RedemptionData = {
       team_name: teamName!.toUpperCase(),
       staff_pass_id: staffID,
@@ -78,9 +83,16 @@ export default function NewRedemption(props: NewRedemptionProps) {
     });
     await res.json();
 
-    return toast("Successfully redeemed for " + teamName + " !", {
-      type: "success",
-    });
+    return toast(
+      "Successfully redeemed " +
+        numToRedeem.toString() +
+        " gift(s) for " +
+        teamName +
+        " !",
+      {
+        type: "success",
+      }
+    );
   };
 
   return (

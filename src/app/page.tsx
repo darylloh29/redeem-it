@@ -51,7 +51,7 @@ export default function Home() {
       <div className="w-full max-w-7xl">
         <Redemptions staffMap={staffMap} />
       </div>
-      <ToastContainer autoClose={3000} />
+      <ToastContainer />
     </main>
   );
 }
