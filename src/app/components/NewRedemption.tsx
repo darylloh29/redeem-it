@@ -22,7 +22,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
   const [staffID, setStaffID] = useState<string>("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStaffID(event.target.value);
+    setStaffID(event.target.value.toUpperCase());
   };
 
   const handleSubmit = async () => {

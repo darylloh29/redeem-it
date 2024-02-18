@@ -14,7 +14,7 @@ type RedemptionData = {
   redeemed_at: number;
 };
 
-const TABLE_HEAD = ["Team Name", "Collected By", "Qty", "Collected At"];
+const TABLE_HEAD = ["Team Name", "Collected By", "Qty", "Date"];
 
 const convertEpochToDate = (epoch: number) => {
   const months = [
