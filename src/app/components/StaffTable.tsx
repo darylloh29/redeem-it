@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import Loading from "./Loading";
 
 interface StaffTableProps {
   staffList: Staff[];
+  setStaffList: Dispatch<SetStateAction<Staff[]>>;
 }
 type Staff = {
   staff_pass_id: string;
@@ -15,9 +17,20 @@ const TABLE_HEAD = ["Staff ID", "Team Name"];
 
 export default function StaffTable(props: StaffTableProps) {
   const [search, setSearch] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [displayNoResult, setDisplayNoResult] = useState<Boolean>(false);
   const [displayList, setDisplayList] = useState<Staff[]>([]);
   const staffList = props.staffList;
+
+  useEffect(() => {
+    const fetchStaffData = async () => {
+      const response = await fetch("/api/staff");
+      const staffData = await response.json();
+      props.setStaffList(staffData);
+      setIsLoading(false);
+    };
+    fetchStaffData().catch(console.error);
+  }, []);
 
   useEffect(() => {
     if (search === "") {
@@ -70,40 +83,46 @@ export default function StaffTable(props: StaffTableProps) {
       </div>
       <div className="z-10 w-full items-center justify-between font-mono text-sm lg:flex max-h-full">
         <div className="overflow-y-auto h-96 w-full">
-          <table className="w-full min-w-max table-auto text-left">
-            <thead>
-              <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th key={head} className="border-b border-black p-4">
-                    {head}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            {!displayNoResult && (
-              <tbody>
-                {displayList.length != 0
-                  ? displayList.map(({ staff_pass_id, team_name }) => {
-                      const classes = "p-4";
-                      return (
-                        <tr key={staff_pass_id}>
-                          <td className={classes}>{staff_pass_id}</td>
-                          <td className={classes}>{team_name}</td>
-                        </tr>
-                      );
-                    })
-                  : staffList.map(({ staff_pass_id, team_name }) => {
-                      const classes = "p-4";
-                      return (
-                        <tr key={staff_pass_id}>
-                          <td className={classes}>{staff_pass_id}</td>
-                          <td className={classes}>{team_name}</td>
-                        </tr>
-                      );
-                    })}
-              </tbody>
-            )}
-          </table>
+          {isLoading ? (
+            <div className="mt-10">
+              <Loading />
+            </div>
+          ) : (
+            <table className="w-full min-w-max table-auto text-left">
+              <thead>
+                <tr>
+                  {TABLE_HEAD.map((head) => (
+                    <th key={head} className="border-b border-black p-4">
+                      {head}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {!displayNoResult && (
+                <tbody>
+                  {displayList.length != 0
+                    ? displayList.map(({ staff_pass_id, team_name }) => {
+                        const classes = "p-4";
+                        return (
+                          <tr key={staff_pass_id}>
+                            <td className={classes}>{staff_pass_id}</td>
+                            <td className={classes}>{team_name}</td>
+                          </tr>
+                        );
+                      })
+                    : staffList.map(({ staff_pass_id, team_name }) => {
+                        const classes = "p-4";
+                        return (
+                          <tr key={staff_pass_id}>
+                            <td className={classes}>{staff_pass_id}</td>
+                            <td className={classes}>{team_name}</td>
+                          </tr>
+                        );
+                      })}
+                </tbody>
+              )}
+            </table>
+          )}
         </div>
       </div>
       {displayNoResult && (

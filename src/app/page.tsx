@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import StaffTable from "./components/StaffTable";
 import Redemptions from "./components/Redemptions";
-import useFetch from "./hooks/useFetch";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -16,15 +15,6 @@ type Staff = {
 export default function Home() {
   const [staffList, setStaffList] = useState<Staff[]>([]);
   const [staffMap, setStaffMap] = useState<Map<string, string>>(new Map());
-
-  useEffect(() => {
-    const fetchStaffData = async () => {
-      const response = await fetch("/api/staff");
-      const staffData = await response.json();
-      setStaffList(staffData);
-    };
-    fetchStaffData().catch(console.error);
-  }, []);
 
   useEffect(() => {
     const tempStaffMap = new Map();
@@ -56,7 +46,7 @@ export default function Home() {
         </svg>
       </div>
       <div className="w-full max-w-7xl">
-        <StaffTable staffList={staffList} />
+        <StaffTable staffList={staffList} setStaffList={setStaffList} />
       </div>
       <div className="w-full max-w-7xl">
         <Redemptions staffMap={staffMap} />

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import useFetch from "../hooks/useFetch";
+import { useState } from "react";
 import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
 
@@ -22,15 +21,6 @@ type RedemptionData = {
 export default function Redemptions(props: RedemptionsProps) {
   const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);
 
-  useEffect(() => {
-    const fetchRedemptionData = async () => {
-      const response = await fetch("/api/redemptions");
-      const redemptionData = await response.json();
-      setRedemptionList(redemptionData);
-    };
-    fetchRedemptionData();
-  }, []);
-
   return (
     <div className="flex flex-row w-full">
       <div className="basis-2/5 mr-2">
@@ -41,7 +31,10 @@ export default function Redemptions(props: RedemptionsProps) {
         />
       </div>
       <div className="basis-3/5 ml-2">
-        <PastRedemptions redemptionList={redemptionList} />
+        <PastRedemptions
+          redemptionList={redemptionList}
+          setRedemptionList={setRedemptionList}
+        />
       </div>
     </div>
   );
