@@ -10,10 +10,11 @@ interface PastRedemptionsProps {
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
+  qty_redeemed: number;
   redeemed_at: number;
 };
 
-const TABLE_HEAD = ["Team Name", "Collected By", "Collected At"];
+const TABLE_HEAD = ["Team Name", "Collected By", "Qty", "Collected At"];
 
 const convertEpochToDate = (epoch: number) => {
   const months = [
@@ -76,13 +77,14 @@ export default function PastRedemptions(props: PastRedemptionsProps) {
               </thead>
               <tbody>
                 {props.redemptionList.map(
-                  ({ team_name, staff_pass_id, redeemed_at }) => {
+                  ({ team_name, staff_pass_id, qty_redeemed, redeemed_at }) => {
                     const classes = "p-4";
                     const redeemedDate = convertEpochToDate(redeemed_at);
                     return (
                       <tr key={staff_pass_id}>
                         <td className={classes}>{team_name}</td>
                         <td className={classes}>{staff_pass_id}</td>
+                        <td className={classes}>{qty_redeemed}</td>
                         <td className={classes}>{redeemedDate}</td>
                       </tr>
                     );

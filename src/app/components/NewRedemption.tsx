@@ -11,14 +11,10 @@ interface NewRedemptionProps {
 
 type StaffPassID = string;
 type TeamName = string;
-type Staff = {
-  staff_pass_id: StaffPassID;
-  team_name: TeamName;
-  created_at: string;
-};
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
+  qty_redeemed: number;
   redeemed_at: number;
 };
 
@@ -68,6 +64,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
     const newRedemption: RedemptionData = {
       team_name: teamName!.toUpperCase(),
       staff_pass_id: staffID,
+      qty_redeemed: numToRedeem,
       redeemed_at: new Date().getTime(),
     };
     redemptionList.push(newRedemption);

@@ -7,14 +7,10 @@ import PastRedemptions from "./PastRedemptions";
 interface RedemptionsProps {
   staffMap: Map<string, string>;
 }
-type Staff = {
-  staff_pass_id: string;
-  team_name: string;
-  created_at: string;
-};
 type RedemptionData = {
   team_name: string;
   staff_pass_id: string;
+  qty_redeemed: number;
   redeemed_at: number;
 };
 
