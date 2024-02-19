@@ -65,7 +65,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
     redemptionList.push(newRedemption);
     props.setRedemptionList(redemptionList);
 
-    const res = await fetch("/api/redemptions", {
+    await fetch("/api/redemptions", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -73,7 +73,6 @@ export default function NewRedemption(props: NewRedemptionProps) {
       },
       body: JSON.stringify(redemptionList),
     });
-    await res.json();
 
     return toast(
       "Successfully redeemed " +

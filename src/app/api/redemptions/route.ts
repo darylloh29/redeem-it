@@ -21,6 +21,14 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const data = (await request.json()) as RedemptionData[];
+  if (data.length < 1) {
+    const csvHeader = "team_name,staff_pass_id,qty_redeemed,redeemed_at";
+    await fs.writeFile(
+      process.cwd() + "/db/team-to-redeemed-mapping.csv",
+      csvHeader
+    );
+    return Response.json("Successfully reset");
+  }
   const csvString = Papa.unparse(data);
   await fs.writeFile(
     process.cwd() + "/db/team-to-redeemed-mapping.csv",
