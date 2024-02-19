@@ -20,9 +20,7 @@ export default function StaffTable(props: StaffTableProps) {
 
   useEffect(() => {
     const fetchStaffData = async () => {
-      const url = process.env.NEXT_PUBLIC_BASE_URL
-        ? process.env.NEXT_PUBLIC_BASE_URL + "api/staff"
-        : "http://localhost:3000/api/staff";
+      const url = process.env.NEXT_PUBLIC_BASE_URL + "/api/staff";
       try {
         const response = await fetch(url);
         const staffData = await response.json();
