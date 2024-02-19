@@ -2,6 +2,7 @@
 
 import { useState, Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
+import { RedemptionData } from "../_types/Redemption";
 
 interface NewRedemptionProps {
   staffMap: Map<StaffPassID, TeamName>;
@@ -11,12 +12,6 @@ interface NewRedemptionProps {
 
 type StaffPassID = string;
 type TeamName = string;
-type RedemptionData = {
-  team_name: string;
-  staff_pass_id: string;
-  qty_redeemed: number;
-  redeemed_at: number;
-};
 
 export default function NewRedemption(props: NewRedemptionProps) {
   const [staffID, setStaffID] = useState<string>("");

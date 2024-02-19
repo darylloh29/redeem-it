@@ -3,16 +3,11 @@
 import { useState } from "react";
 import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
+import { RedemptionData } from "../_types/Redemption";
 
 interface RedemptionsProps {
   staffMap: Map<string, string>;
 }
-type RedemptionData = {
-  team_name: string;
-  staff_pass_id: string;
-  qty_redeemed: number;
-  redeemed_at: number;
-};
 
 export default function Redemptions(props: RedemptionsProps) {
   const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);

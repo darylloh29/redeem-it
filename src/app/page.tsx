@@ -5,12 +5,7 @@ import StaffTable from "./_components/StaffTable";
 import Redemptions from "./_components/Redemptions";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-
-type Staff = {
-  staff_pass_id: string;
-  team_name: string;
-  created_at: string;
-};
+import { Staff } from "./_types/Staff";
 
 export default function Home() {
   const [staffList, setStaffList] = useState<Staff[]>([]);

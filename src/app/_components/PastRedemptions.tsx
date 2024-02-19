@@ -2,17 +2,12 @@
 
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import Loading from "./Loading";
+import { RedemptionData } from "../_types/Redemption";
 
 interface PastRedemptionsProps {
   redemptionList: RedemptionData[];
   setRedemptionList: Dispatch<SetStateAction<RedemptionData[]>>;
 }
-type RedemptionData = {
-  team_name: string;
-  staff_pass_id: string;
-  qty_redeemed: number;
-  redeemed_at: number;
-};
 
 const TABLE_HEAD = ["Team Name", "Collected By", "Qty", "Date"];
 

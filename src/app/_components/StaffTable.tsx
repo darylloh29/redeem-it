@@ -2,16 +2,12 @@
 
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import Loading from "./Loading";
+import { Staff } from "../_types/Staff";
 
 interface StaffTableProps {
   staffList: Staff[];
   setStaffList: Dispatch<SetStateAction<Staff[]>>;
 }
-type Staff = {
-  staff_pass_id: string;
-  team_name: string;
-  created_at: string;
-};
 
 const TABLE_HEAD = ["Staff ID", "Team Name"];
 
