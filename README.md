@@ -36,7 +36,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Redeem IT supports unit testing with Vitest. Run the following command to launch the testing environment.
+Redeem IT supports unit testing of all components and API routes with Vitest. Run the following command to launch the testing environment.
 
 ```bash
 npm run test
