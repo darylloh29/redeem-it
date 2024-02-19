@@ -20,7 +20,7 @@ export default function Home() {
   }, [staffList]);
 
   return (
-    <main className="font-mono relative flex min-h-screen flex-col items-center p-24">
+    <main className="font-mono relative flex min-h-screen flex-col items-center dark:bg-slate-800 p-24">
       <div className="flex max-w-7xl">
         <h1 className="font-serif mb-4 text-4xl text-gray-900 md:text-5xl lg:text-6xl dark:text-white p-4">
           Redeem IT!
