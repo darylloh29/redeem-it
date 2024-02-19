@@ -3,3 +3,5 @@ export type Staff = {
   team_name: string;
   created_at: string;
 };
+
+export type StaffMap = Map<string, string>;

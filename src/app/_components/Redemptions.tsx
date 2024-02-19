@@ -3,10 +3,10 @@
 import { useState } from "react";
 import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
-import { RedemptionData } from "../_types/Redemption";
+import { RedemptionData, StaffMap } from "../_types/Redemption";
 
 interface RedemptionsProps {
-  staffMap: Map<string, string>;
+  staffMap: StaffMap;
 }
 
 export default function Redemptions(props: RedemptionsProps) {
