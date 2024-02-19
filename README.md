@@ -1,4 +1,7 @@
-Redeem IT is a gift redemption app for your redemption tracking needs!
+## Redeem IT!
+
+Redeem IT is a gift redemption tracking app for redemption tracking needs!
+Welcome to Redeem IT! This software tool is designed to streamline the process of redeeming gifts or rewards. With this application, users can easily track the status of gift redemptions and issue gifts to eligible individuals and teams.
 
 Core functionalities:
 
@@ -8,7 +11,7 @@ Core functionalities:
 
 Assumptions:
 
-1. Staff representative will always redeem gifts for the entire department
+1. A team representative will always redeem gifts for the entire team
 2. This programme is only intended for personal use
 
 ## How to use Redeem IT
