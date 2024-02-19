@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import StaffTable from "./components/StaffTable";
-import Redemptions from "./components/Redemptions";
+import StaffTable from "./_components/StaffTable";
+import Redemptions from "./_components/Redemptions";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
