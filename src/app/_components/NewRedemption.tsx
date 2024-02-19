@@ -101,7 +101,7 @@ export default function NewRedemption(props: NewRedemptionProps) {
       >
         <input
           className="shadow appearance-none border rounded w-full mr-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="Staff ID"
+          id="staff-id"
           type="text"
           onChange={handleInputChange}
           placeholder="Enter Staff ID here"
