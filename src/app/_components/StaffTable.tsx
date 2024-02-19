@@ -83,7 +83,7 @@ export default function StaffTable(props: StaffTableProps) {
           onChange={handleSearchChange}
         />
       </div>
-      <div className="z-10 w-full items-center justify-between font-mono text-sm lg:flex max-h-full">
+      <div className="z-10 w-full items-center justify-center font-mono text-sm lg:flex max-h-full">
         <div className="overflow-y-auto h-96 w-full">
           {isLoading ? (
             <div className="mt-10">
@@ -125,13 +125,13 @@ export default function StaffTable(props: StaffTableProps) {
               )}
             </table>
           )}
+          {displayNoResult && (
+            <div className="flex justify-center text-2xl text-gray-900 dark:text-white p-4">
+              <h1>No Results Found!</h1>
+            </div>
+          )}
         </div>
       </div>
-      {displayNoResult && (
-        <div className="flex p-4">
-          <h1>No Results Found!</h1>
-        </div>
-      )}
     </div>
   );
 }
