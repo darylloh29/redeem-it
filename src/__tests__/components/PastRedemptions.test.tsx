@@ -1,9 +1,9 @@
 import { test } from "vitest";
 import { render } from "@testing-library/react";
-import NewRedemption from "../app/_components/PastRedemptions";
-import { RedemptionData } from "../app/_types/Redemption";
+import PastRedemptions from "../../app/_components/PastRedemptions";
+import { RedemptionData } from "../../app/_types/Redemption";
 
-test("NewRedemption", () => {
+test("PastRedemptions", () => {
   const redemptionList: RedemptionData[] = [
     {
       staff_pass_id: "ID 1",
@@ -26,7 +26,7 @@ test("NewRedemption", () => {
   ];
   const setRedemptionList = () => {};
   render(
-    <NewRedemption
+    <PastRedemptions
       redemptionList={redemptionList}
       setRedemptionList={setRedemptionList}
     />

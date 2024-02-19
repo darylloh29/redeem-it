@@ -1,7 +1,7 @@
 import { test } from "vitest";
 import { render } from "@testing-library/react";
-import StaffTable from "../app/_components/StaffTable";
-import { Staff } from "../app/_types/Staff";
+import StaffTable from "../../app/_components/StaffTable";
+import { Staff } from "../../app/_types/Staff";
 
 test("StaffTable", () => {
   const staffList: Staff[] = [

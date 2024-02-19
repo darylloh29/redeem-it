@@ -1,7 +1,7 @@
 import { test } from "vitest";
 import { render } from "@testing-library/react";
-import Redemptions from "../app/_components/Redemptions";
-import { StaffMap } from "../app/_types/Staff";
+import Redemptions from "../../app/_components/Redemptions";
+import { StaffMap } from "../../app/_types/Staff";
 
 test("Redemptions", () => {
   const staffMap: StaffMap = new Map([
