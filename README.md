@@ -25,7 +25,7 @@ npm install
 Next, intialise the environment variables in a _.env.local_ file in your root directory:
 
 ```bash
-NEXT_PUBLIC_BASE_URL=http://localhost:3000/
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 Run the development server:
