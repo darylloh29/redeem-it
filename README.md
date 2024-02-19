@@ -28,7 +28,7 @@ Next, intialise the environment variables in a .env.local file in your root dire
 NEXT_PUBLIC_BASE_URL=http://localhost:3000/
 ```
 
-Next, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
@@ -36,7 +36,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Redeem IT supports unit testing of all components and API routes with Vitest. Run the following command to launch the testing environment.
+Redeem IT supports unit testing of all components and API routes with Vitest.
+Run the following command to launch the testing environment.
 
 ```bash
 npm run test
