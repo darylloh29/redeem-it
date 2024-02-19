@@ -22,7 +22,7 @@ First, install all required dependencies:
 npm install
 ```
 
-Next, intialise the environment variables in a .env.local file in your root directory:
+Next, intialise the environment variables in a _.env.local_ file in your root directory:
 
 ```bash
 NEXT_PUBLIC_BASE_URL=http://localhost:3000/
