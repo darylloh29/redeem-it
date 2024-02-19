@@ -14,7 +14,7 @@ Assumptions:
 1. A team representative will always redeem gifts for the entire team
 2. This programme is only intended for personal use
 
-## How to use Redeem IT
+### How to use Redeem IT
 
 First, install all required dependencies:
 
@@ -35,6 +35,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Unit Testing
 
 Redeem IT supports unit testing of all components and API routes with Vitest.
 Run the following command to launch the testing environment.
