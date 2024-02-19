@@ -14,15 +14,15 @@ export default function Redemptions(props: RedemptionsProps) {
   const [redemptionList, setRedemptionList] = useState<RedemptionData[]>([]);
 
   return (
-    <div className="flex flex-row w-full">
-      <div className="basis-2/5 mr-2">
+    <div className="flex w-full flex-col lg:flex-row p-4">
+      <div className="lg:basis-2/5 my-2 lg:mr-2 lg:my-0">
         <NewRedemption
           staffMap={props.staffMap}
           redemptionList={redemptionList}
           setRedemptionList={setRedemptionList}
         />
       </div>
-      <div className="basis-3/5 ml-2">
+      <div className="lg:basis-3/5 my-2 lg:ml-2 lg:my-0">
         <PastRedemptions
           redemptionList={redemptionList}
           setRedemptionList={setRedemptionList}
