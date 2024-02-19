@@ -1,4 +1,2 @@
-staff_pass_id,team_name,redeemed_at,qty_redeemed
-ID 1,Team 1,1708154345000,1234
-ID 2,Team 2,1708154545000,1523
-ID 3,Team 3,1708164345000,12
+team_name,staff_pass_id,qty_redeemed,redeemed_at
+HUFFLEPUFF,BOSS_LRDTIELIM6RQ,1000,1708154345000
