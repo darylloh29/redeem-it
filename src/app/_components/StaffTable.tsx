@@ -94,7 +94,10 @@ export default function StaffTable(props: StaffTableProps) {
               <thead>
                 <tr>
                   {TABLE_HEAD.map((head) => (
-                    <th key={head} className="border-b border-black p-4">
+                    <th
+                      key={head}
+                      className="border-b border-black dark:border-white p-4"
+                    >
                       {head}
                     </th>
                   ))}
