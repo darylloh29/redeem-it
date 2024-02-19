@@ -20,10 +20,17 @@ export default function StaffTable(props: StaffTableProps) {
 
   useEffect(() => {
     const fetchStaffData = async () => {
-      const response = await fetch("/api/staff");
-      const staffData = await response.json();
-      props.setStaffList(staffData);
-      setIsLoading(false);
+      const url = process.env.NEXT_PUBLIC_BASE_URL
+        ? process.env.NEXT_PUBLIC_BASE_URL + "api/staff"
+        : "http://localhost:3000/api/staff";
+      try {
+        const response = await fetch(url);
+        const staffData = await response.json();
+        props.setStaffList(staffData);
+        setIsLoading(false);
+      } catch (e) {
+        console.error(e);
+      }
     };
     fetchStaffData().catch(console.error);
   }, []);

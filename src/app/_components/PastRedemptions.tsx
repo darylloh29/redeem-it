@@ -40,10 +40,17 @@ export default function PastRedemptions(props: PastRedemptionsProps) {
 
   useEffect(() => {
     const fetchRedemptionData = async () => {
-      const response = await fetch("/api/redemptions");
-      const redemptionData = await response.json();
-      props.setRedemptionList(redemptionData);
-      setIsLoading(false);
+      const url = process.env.NEXT_PUBLIC_BASE_URL
+        ? process.env.NEXT_PUBLIC_BASE_URL + "api/redemptions"
+        : "http://localhost:3000/api/redemptions";
+      try {
+        const response = await fetch(url);
+        const redemptionData = await response.json();
+        props.setRedemptionList(redemptionData);
+        setIsLoading(false);
+      } catch (e) {
+        console.error(e);
+      }
     };
     fetchRedemptionData();
   }, []);
