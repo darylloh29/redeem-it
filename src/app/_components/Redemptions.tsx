@@ -3,7 +3,8 @@
 import { useState } from "react";
 import NewRedemption from "./NewRedemption";
 import PastRedemptions from "./PastRedemptions";
-import { RedemptionData, StaffMap } from "../_types/Redemption";
+import { RedemptionData } from "../_types/Redemption";
+import { StaffMap } from "../_types/Staff";
 
 interface RedemptionsProps {
   staffMap: StaffMap;
